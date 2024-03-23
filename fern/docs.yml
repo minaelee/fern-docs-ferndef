@@ -1,5 +1,5 @@
 instances:
-  - url: petstore-ferndef.docs.buildwithfern.com
+  - url: ferndef-starter-test.docs.buildwithfern.com
 
 navigation:
   - section: Get started
