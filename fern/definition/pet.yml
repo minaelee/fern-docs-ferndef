@@ -6,24 +6,24 @@ service:
 
   endpoints:
     add:
-      display-name: Add pet
+      display-name: Add new pet
       docs: Add a new Pet to the store
       method: POST
-      path: ""
+      path: ''
       request: AddPetRequest
       response: Pet
       errors:
         - InvalidPetInputError
       examples:
         - request: $AddPetRequest.ExamplePetRequest
-          response: 
+          response:
             body: $Pet.ExamplePetResponse
 
     update:
       display-name: Update pet
       docs: Update an existing Pet by ID
       method: PUT
-      path: ""
+      path: ''
       request: UpdatePetRequest
       response: Pet
       errors:
@@ -31,7 +31,7 @@ service:
         - PetNotFoundError
       examples:
         - request: $UpdatePetRequest.ExamplePetRequest
-          response: 
+          response:
             body: $Pet.ExamplePetResponse
 
     findPetsByStatus:
@@ -49,8 +49,8 @@ service:
       errors:
         - InvalidPetStatusError
       examples:
-        - response: 
-            body: 
+        - response:
+            body:
               - $Pet.ExamplePetResponse
 
     findPetsByTags:
@@ -58,7 +58,7 @@ service:
       docs: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
       method: GET
       path: /findByTags
-      request: 
+      request:
         name: findPetsByTagsRequest
         query-parameters:
           tags:
@@ -68,8 +68,8 @@ service:
       errors:
         - InvalidTagError
       examples:
-        - response: 
-            body: 
+        - response:
+            body:
               - $Pet.ExamplePetResponse
 
     findPetByID:
@@ -88,7 +88,7 @@ service:
       examples:
         - path-parameters:
             petID: 44
-          response: 
+          response:
             body: $Pet.ExamplePetResponse
 
     updatePetWithForm:
@@ -145,16 +145,16 @@ service:
       # error on generate -- looks like a bug where if there's a request
       # field for the endpoint, and you don't include a request example,
       # it causes an error -- but there should be no request example
-      # for this endpoint as it's a file. 
+      # for this endpoint as it's a file.
       # examples:
-      #   - response: 
+      #   - response:
       #       body: $ApiResponse.ExampleApiResponse
 
 types:
   AddPetRequest:
     properties:
       name: string
-      photoUrls: 
+      photoUrls:
         type: optional<list<string>>
         docs: A list of publicly available URLs featuring the Pet
       category: optional<Category>
@@ -168,13 +168,13 @@ types:
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-adventure.jpeg
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-ball.jpeg
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-hiking.jpeg
-            - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-tent.jpeg       
+            - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-tent.jpeg
 
   UpdatePetRequest:
     properties:
       id: integer
       name: optional<string>
-      photoUrls: 
+      photoUrls:
         type: optional<list<string>>
         docs: A list of publicly available URLs featuring the Pet
       category: optional<Category>
@@ -188,13 +188,13 @@ types:
 
   Pet:
     properties:
-      id: 
+      id:
         type: integer
         docs: A unique ID for the Pet
-      name: 
+      name:
         type: string
         docs: The first name of the Pet
-      photoUrls: 
+      photoUrls:
         type: list<string>
         docs: A list of publicly available URLs featuring the Pet
       category: optional<Category>
@@ -212,7 +212,7 @@ types:
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-adventure.jpeg
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-ball.jpeg
             - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-hiking.jpeg
-            - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-tent.jpeg   
+            - https://fern-image-hosting.s3.amazonaws.com/petstore/markley-tent.jpeg
           tags:
             - $Tag.ExampleTag1
           status: pending
